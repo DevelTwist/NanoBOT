@@ -1,14 +1,43 @@
 /*
 *	 DESARROLLADOR: @DevelTwistCode
 */
+	
+	Stats = {
 
+		Compra: null,
+		Venta: null,
+		Promedio: null,
+		BTC: null,
+		USD: null,
+		NANO: null,
+		NANOUSD: null,
+
+	}
+
+
+	var express = require('express');
 	const Data = require('./DataConnection');
+	const Queries = require('./Queries');
+	var body_parser = require('body-parser');
+	
+
+	// CONSULTA WEB //
+
+	const withdrawlFees = 0.00022;
+	const depositFees = 0.00066;
+
+	Queries.requestLocalBitcoin();
+	Queries.requestBitcoinPrice();
+	Queries.requestNanoPrice();
+
+	// FIN CONSULTA
 
 	const TelegramBot = require(Data.nameApi());
 	// TOKEN Que genera @BotFather
 	const token = Data.token();
 	// Crear un Objeto TelegramBot Recibe 2 parametros Token y Polling
 	const bot = new TelegramBot(token, {polling: true});
+
 
 //METODOS DE FUNCIONALIDAD
 
@@ -54,6 +83,7 @@ bot.on('message', (msg) => {
   // send a message to the chat acknowledging receipt of their message
   //bot.sendMessage(chatId, '');
 });
+
 
 
 

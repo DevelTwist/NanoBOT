@@ -27,8 +27,12 @@
   },
   "homepage": "https://github.com/DevelTwist/NanoBOT#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "bot-brother": "^2.1.5",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
     "node-telegram-bot-api": "^0.30.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "tough-cookie": "^2.4.3"
   }
 }
