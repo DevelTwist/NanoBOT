@@ -1,0 +1,28 @@
+{
+  "name": "nanobot",
+  "version": "1.0.0",
+  "description": "Bot Que actualiza el precio de las criptomonedas en BsS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevelTwist/NanoBOT.git"
+  },
+  "keywords": [
+    "NANO",
+    "BitCoin",
+    "BOT",
+    "Telegram",
+    "Twitter",
+    "Facebook",
+    "Discord"
+  ],
+  "author": "Luis F Vargas Gómez.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevelTwist/NanoBOT/issues"
+  },
+  "homepage": "https://github.com/DevelTwist/NanoBOT#readme"
+}
