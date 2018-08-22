@@ -4,7 +4,8 @@
   "description": "Bot Que actualiza el precio de las criptomonedas en BsS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/DevelTwist/NanoBOT/issues"
   },
-  "homepage": "https://github.com/DevelTwist/NanoBOT#readme"
+  "homepage": "https://github.com/DevelTwist/NanoBOT#readme",
+  "dependencies": {
+    "bot-brother": "^2.1.5",
+    "node-telegram-bot-api": "^0.30.0",
+    "request": "^2.88.0"
+  }
 }
