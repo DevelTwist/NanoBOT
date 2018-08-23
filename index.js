@@ -21,7 +21,7 @@
 
 		setInterval(function(){
 			Update.updateStats();
-		},600000);
+		},30000);
 		
 	// FIN CONSULTA
 
@@ -46,21 +46,22 @@ bot.onText(/\/start/, function(msg){
 	
 	var chatId = msg.chat.id;
 	var username = msg.from.username;
+	/*
 	var Sites = [
 		{
 			name: "NanoExchange [Español]",
 			url: "@NanoExchange"
 		},
-	]
+	]*/
 
 	Update.updateStats();
-
-	bot.sendMessage(chatId, "Hola, " + username + " Este es un sistema de notificaciones que actualiza en cadencias de 45 minutos el precio de las criptomonedas (Por ahora BTC-Nano) en moneda local (valido para Venezuela). ");
+	bot.sendMessage(chatId, "Hola, " + username + " Bienvenido a NanoBOT v1.0.1 (BETA) El sistema actualiza los datos cada 5 minutos, utiliza el comando /precio para visualizar el precio de las criptomonedas (Por ahora BTC-Nano) en moneda local (valido para Venezuela). ");
 	bot.sendMessage(chatId, "El Algoritmo compara el precio del Bitcoin en www.localbitcoin.com con las tazas de los compradores locales, Haciendo una aproximación estimada de los precios y brindando datos de interés. Muchas gracias por preferirnos. ");
-
+	
+	/*
 	Sites.forEach( function(element) {
 		bot.sendMessage(chatId, element.name +" --> "+ element.url);
-	});
+	});*/
 	
 });
 
@@ -73,8 +74,9 @@ bot.onText(/\/precio/, (msg) => {
   const chatId = msg.chat.id;
 
 
-
-	var mensaje = " ► Precio de compra VES/BTC: " + Stats.Compra + " VES. \n" +
+  	var fecha = new Date();
+	var mensaje = " Fecha: "+fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getFullYear()+" Hora: "+fecha.getHours()+":"+fecha.getMinutes()+". \n" + 
+				  " ► Precio de compra VES/BTC: " + Stats.Compra + " VES. \n" +
 		  		  " ► Precio de venta VES/BTC: " + Stats.Venta + " VES. \n" +
 		  		  " ► USD/BTC: " + Stats.BTC + " $. \n" +
 		  		  " ► VES/USD: " + Stats.USD + " VES. \n" +
