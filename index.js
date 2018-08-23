@@ -11,26 +11,26 @@
 		USD: null,
 		NANO: null,
 		NANOUSD: null,
+		NANONeto: null,
+		NANOTrade: null,
+		NANOTaza: null,
 
 	}
+
+	 // CONSULTA WEB //
+
+		setInterval(function(){
+			Update.updateStats();
+		},600000);
+		
+	// FIN CONSULTA
 
 
 	var express = require('express');
 	const Data = require('./DataConnection');
-	const Queries = require('./Queries');
+	const Update = require('./Update');
 	var body_parser = require('body-parser');
 	
-
-	// CONSULTA WEB //
-
-	const withdrawlFees = 0.00022;
-	const depositFees = 0.00066;
-
-	Queries.requestLocalBitcoin();
-	Queries.requestBitcoinPrice();
-	Queries.requestNanoPrice();
-
-	// FIN CONSULTA
 
 	const TelegramBot = require(Data.nameApi());
 	// TOKEN Que genera @BotFather
@@ -53,6 +53,8 @@ bot.onText(/\/start/, function(msg){
 		},
 	]
 
+	Update.updateStats();
+
 	bot.sendMessage(chatId, "Hola, " + username + " Este es un sistema de notificaciones que actualiza en cadencias de 45 minutos el precio de las criptomonedas (Por ahora BTC-Nano) en moneda local (valido para Venezuela). ");
 	bot.sendMessage(chatId, "El Algoritmo compara el precio del Bitcoin en www.localbitcoin.com con las tazas de los compradores locales, Haciendo una aproximación estimada de los precios y brindando datos de interés. Muchas gracias por preferirnos. ");
 
@@ -63,16 +65,27 @@ bot.onText(/\/start/, function(msg){
 });
 
 // Matches "/echo [whatever]"
-bot.onText(/\/echo (.+)/, (msg, match) => {
+bot.onText(/\/precio/, (msg) => {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
 
   const chatId = msg.chat.id;
-  const resp = match[1]; // the captured "whatever"
 
-  // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, resp);
+
+
+	var mensaje = " ► Precio de compra VES/BTC: " + Stats.Compra + " VES. \n" +
+		  		  " ► Precio de venta VES/BTC: " + Stats.Venta + " VES. \n" +
+		  		  " ► USD/BTC: " + Stats.BTC + " $. \n" +
+		  		  " ► VES/USD: " + Stats.USD + " VES. \n" +
+		  		  " ► BTC/NANO: " + Stats.NANO + " BTC. \n" +
+		  		  " ► USD/NANO: " + Stats.NANOUSD + " USD. \n" +
+		  		  " ► VES/NANO (NETO): " + Stats.NANONeto + " VES. \n" +
+		  		  " ► VES/NANO (TRADING): " + Stats.NANOTrade + " VES. \n"+
+		  		  " ► VES/NANO (Aproximacion Compradores): " + Stats.NANOTaza + " VES. \n";
+
+  bot.sendMessage(chatId,mensaje);
+
 });
 
 // Listen for any kind of message. There are different kinds of

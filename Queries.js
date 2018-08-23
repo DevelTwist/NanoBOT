@@ -43,6 +43,7 @@
 			suma = suma.toFixed(2) / 2;
 			Stats.Venta = PromVenta.toFixed(2); 
 			Stats.Promedio = suma.toFixed(2);
+			return true;
 
 		}
 	});
@@ -69,7 +70,6 @@
 			Stats.BTC = valor.toFixed(2);
 			Stats.USD = Stats.Promedio / Stats.BTC;
 			Stats.USD = Stats.USD.toFixed(2);
-
 		}
 		
 	});
@@ -94,7 +94,6 @@
 				Stats.NANOUSD = Stats.NANO * Stats.BTC;
 				Stats.NANOUSD = Stats.NANOUSD.toFixed(2);
 			});
-		
 		}
 	});
 
